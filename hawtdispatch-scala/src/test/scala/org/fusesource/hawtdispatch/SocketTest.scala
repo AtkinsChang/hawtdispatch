@@ -20,7 +20,7 @@ package org.fusesource.hawtdispatch
 import org.scalatest._
 import junit.JUnitRunner
 import org.junit.runner.RunWith
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import java.nio._
 import java.nio.channels._
 import java.net._
@@ -35,7 +35,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author <a href="http://hiramchirino.com">Hiram Chirino</a>
  */
 @RunWith(classOf[JUnitRunner])
-class SocketTest extends FunSuite with ShouldMatchers {
+class SocketTest extends FunSuite with Matchers {
 
   test("Socket Disconnect Event") {
 

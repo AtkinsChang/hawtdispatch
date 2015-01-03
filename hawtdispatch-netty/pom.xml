@@ -25,60 +25,41 @@
   <parent>
     <groupId>org.fusesource.hawtdispatch</groupId>
     <artifactId>hawtdispatch-project</artifactId>
-    <version>1.14-SNAPSHOT</version>
+    <version>1.22-SNAPSHOT</version>
+    <relativePath>../</relativePath>
   </parent>
-    
-  <groupId>org.fusesource.hawtdispatch</groupId>
+
   <artifactId>hawtdispatch-netty</artifactId>
-  <version>1.14-SNAPSHOT</version>
+  <version>1.12-SNAPSHOT</version>
   <packaging>bundle</packaging>
 
   <description>HawtDispatch Transport: Transport abstractions for HawtDispatch</description>
 
-  <properties>
-    <junit-version>4.7</junit-version>
-    <asm-version>3.1</asm-version>
-    <log4j-version>1.2.14</log4j-version>
-    <osgi-version>4.2.0</osgi-version>
-  </properties>
-
   <dependencies>
-
     <dependency>
       <groupId>org.fusesource.hawtdispatch</groupId>
       <artifactId>hawtdispatch</artifactId>
-      <version>1.14-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>io.netty</groupId>
       <artifactId>netty-transport</artifactId>
-      <version>4.0.0.Beta1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>${junit-version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>${log4j-version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
   
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>

@@ -26,9 +26,9 @@
     <groupId>org.fusesource.hawtdispatch</groupId>
     <artifactId>hawtdispatch-project</artifactId>
     <version>1.22-SNAPSHOT</version>
+    <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.fusesource.hawtdispatch</groupId>
   <artifactId>hawtdispatch-website</artifactId>
   <version>1.22-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -47,34 +47,29 @@
 
     <dependency>
       <groupId>org.scala-lang</groupId>
-      <artifactId>scala-library</artifactId>
-      <version>${scala-version}</version>
+      <artifactId>scala-compiler</artifactId>
     </dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
-      <artifactId>scala-compiler</artifactId>
-      <version>${scala-version}</version>
+      <artifactId>scala-library</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>org.fusesource.scalate</groupId>
-      <artifactId>scalate-wikitext</artifactId>
-      <version>${scalate-version}</version>
+      <groupId>org.scalatra.scalate</groupId>
+      <artifactId>scalate-wikitext_2.11</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.fusesource.scalate</groupId>
-      <artifactId>scalate-page</artifactId>
-      <version>${scalate-version}</version>
+      <groupId>org.scalatra.scalate</groupId>
+      <artifactId>scalate-page_2.11</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.fusesource.scalamd</groupId>
-      <artifactId>scalamd</artifactId>
-      <version>${scalamd-version}</version>
+      <groupId>org.scalatra.scalate</groupId>
+      <artifactId>scalamd_2.11</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-nop</artifactId>
-      <version>${slf4j-version}</version>
     </dependency>
 
   </dependencies>
@@ -87,7 +82,6 @@
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
-        <version>2.14</version>
         <executions>
           <execution>
             <goals>
@@ -99,14 +93,13 @@
           <jvmArgs>
             <jvmArg>-Xmx1024m</jvmArg>
           </jvmArgs>
-          <scalaVersion>${scala-version}</scalaVersion>
+          <scalaVersion>${scala.version}</scalaVersion>
         </configuration>
       </plugin>    
 
       <plugin>
-        <groupId>org.fusesource.scalate</groupId>
-        <artifactId>maven-scalate-plugin</artifactId>
-        <version>${scalate-version}</version>
+        <groupId>org.scalatra.scalate</groupId>
+        <artifactId>maven-scalate-plugin_2.11</artifactId>
         
         <configuration>
           <webappDirectory>${basedir}/src</webappDirectory>
@@ -165,7 +158,7 @@
       <plugin>
         <groupId>org.fusesource.mvnplugins</groupId>
         <artifactId>maven-linkchecker-plugin</artifactId>
-        <version>1.12</version>
+        <version>${fuse-linkchecker-plugin}</version>
         <configuration>
           <excludedLinks>
             <value>http://github.com/</value>

@@ -25,52 +25,46 @@
     <groupId>org.fusesource.hawtdispatch</groupId>
     <artifactId>hawtdispatch-project</artifactId>
     <version>1.22-SNAPSHOT</version>
+    <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.fusesource.hawtdispatch</groupId>
   <artifactId>hawtdispatch-scala</artifactId>
   <version>1.22-SNAPSHOT</version>
   <packaging>bundle</packaging>
 
   <description>HawtDispatch: The libdispatch style API for Scala</description>
-  
-  <properties>
-    <scala-version>2.10.0</scala-version>
-    <scalatest-version>1.8</scalatest-version>
-  </properties>
+
 
   <dependencies>
-    
     <dependency>
       <groupId>org.fusesource.hawtdispatch</groupId>
       <artifactId>hawtdispatch</artifactId>
-      <version>1.22-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.fusesource.hawtdispatch</groupId>
+      <artifactId>hawtdispatch-transport</artifactId>
     </dependency>
 
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
-      <version>${scala-version}</version>
       <scope>provided</scope>
     </dependency>
 
     <!-- Testing -->
     <dependency>
       <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_${scala-version}</artifactId>
-      <version>${scalatest-version}</version>
+      <artifactId>scalatest_2.11</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>${junit-version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>${log4j-version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -89,6 +83,8 @@
         <inherited>true</inherited>
         <configuration>
           <instructions>
+            <Bundle-Activator>org.fusesource.hawtdispatch.internal.Activator</Bundle-Activator>
+            <Private-Package>org.fusesource.hawtdispatch.internal.*</Private-Package>
             <Fragment-Host>${project.groupId}.hawtdispatch</Fragment-Host>
             <Export-Package>{local-packages};version=${project.version};-noimport:=true;-split-package:=first</Export-Package>
           </instructions>
@@ -98,7 +94,6 @@
       <plugin>
         <groupId>net.alchim31.maven</groupId>
         <artifactId>scala-maven-plugin</artifactId>
-        <version>3.1.0</version>
         <executions>
           <execution>
             <goals>
@@ -116,12 +111,11 @@
             <!-- <arg>-optimise</arg> -->
             <arg>-deprecation</arg>
           </args>
-          <scalaVersion>${scala-version}</scalaVersion>
+          <scalaVersion>${scala.version}</scalaVersion>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.4.3</version>
         <configuration>
           <!-- we must turn off the use of system class loader so our tests can find stuff - otherwise ScalaSupport compiler can't find stuff -->
           <useSystemClassLoader>false</useSystemClassLoader>
@@ -131,7 +125,6 @@
           <failIfNoTests>false</failIfNoTests>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   
@@ -140,11 +133,10 @@
       <plugin>
         <groupId>net.alchim31.maven</groupId>
         <artifactId>scala-maven-plugin</artifactId>
-        <version>3.1.0</version>
         <configuration>
-          <scalaVersion>${scala-version}</scalaVersion>
+          <scalaVersion>${scala.version}</scalaVersion>
           <jvmArgs>
-            <jvmArg>-Xmx850M</jvmArg>
+            <jvmArg>-Xmx850m</jvmArg>
           </jvmArgs>
         </configuration>
       </plugin>
@@ -161,7 +153,6 @@
           <plugin>
             <groupId>net.alchim31.maven</groupId>
             <artifactId>scala-maven-plugin</artifactId>
-            <version>3.1.0</version>
             <configuration>
               <args>
                 <arg>-deprecation</arg>
@@ -181,7 +172,6 @@
           <plugin>
             <groupId>net.alchim31.maven</groupId>
             <artifactId>scala-maven-plugin</artifactId>
-            <version>3.1.0</version>
             <executions>
               <execution>
                 <id>doc</id>
